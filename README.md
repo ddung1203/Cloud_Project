@@ -3,23 +3,28 @@
 ## 개요
 
 >분리된 WEB, DB, DNS(Master, Slave) 서버를 통해 Wordpress 게시판 구현
-https 프로토콜로 암호화하여 보안성 강화
+>https 프로토콜로 암호화하여 보안성 강화
 
-## 요구사항
+## 요구사항 
 >We recommend servers running version 7.4 or greater of PHP and ySQL version 5.7 OR MariaDB version 10.2 or greater.
-We also recommend either Apache or Nginx as the most robust options or running WordPress, but neither is required.
+>We also recommend either Apache or Nginx as the most robust options or running WordPress, but neither is required.
 
 ## 서버 구축 설정
-기본값: SELinux 설정 off
-```
-[root@server ~]# setenforce 0
-[root@server ~]# getenforce 0
-Permissive
-```
+>기본값: SELinux 설정 off
+>```
+>[root@server ~]# setenforce 0
+>[root@server ~]# getenforce 0
+>Permissive
+>```
 
 ## DB 서버
 >
 >#### 기존 MariaDB 삭제 및 MariaDB 10.2이상 설치
+>```
+>[root@db ~]# yum remove mariadb
+>[root@db ~]# yum -y install MariaDB-server MariaDB-client
+>Complete!
+>```
 >```
 >[root@db ~]# vim /etc/yum.repos.d/MariaDB.repo
 >	[mariadb]
@@ -27,12 +32,6 @@ Permissive
 >	baseurl = https://mirror.yongbok.net/mariadb/yum/10.2/centos7-amd64
 >	gpgkey=https://mirror.yongbok.net/mariadb/yum/RPM-GPG-KEY-MariaDB
 >	gpgcheck=1
->```
->
->```
->[root@db ~]# yum remove mariadb
->[root@db ~]# yum -y install MariaDB-server MariaDB-client
->Complete!
 >```
 >
 >#### MariaDB 포트 허용 및 방화벽 설정
@@ -115,7 +114,7 @@ Permissive
 >  rich rules:
 >```
 >
->#### php7.4 이상 설치(기존 php5.4 종료)
+>#### php7.4 이상 설치 및 기존 php5.4 종료
 >```
 >[root@server ~]# yum -y install https://rpms.remirepo.net/enterprise/remi-release-7.rpm
 >Complete!
@@ -248,7 +247,7 @@ Permissive
 
 ## DNS 서버 Master/Slave 구성
 >
->#### Master
+>#### Master 구성
 >```
 >[root@master named]# vim /etc/named.conf
 >	zone "jeonj.exam.com" IN {
@@ -294,7 +293,7 @@ Permissive
 >	117     PTR     server.jeonj.exam.com.
 >```
 >
->#### Slave
+>#### Slave 구성
 >```
 >[root@slave ~]# yum -y install bind bind-utils
 >Complete!
@@ -326,7 +325,7 @@ Permissive
 >	};
 >```
 >
->#### Master/Slave 조회
+>#### Master/Slave 구성 조회
 >```
 >[root@slave ~]# systemctl enable named --now
 >[root@slave ~]# firewall-cmd --add-service=dns --permanent
@@ -337,7 +336,7 @@ Permissive
 >[root@slave ~]# ls /var/named/slaves/
 >	jeonj.exam.com.zone
 >```
->혹은
+>##### 혹은
 >```
 >[root@slave ~]# more /var/log/messages
 >...
