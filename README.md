@@ -424,16 +424,17 @@ Permissive
 # 프로젝트 결과
 
 ## DB 데이터베이스 및 테이블 조회
->
-
+><img src=/img/db_1.png>
+><img src=/img/db_2.png>
 ## 웹 서버 구동
->
+><img src=/img/server_1.png>
 
 ### HTTPS 확인
->
+><img src=/img/https_1.png>
 
 ## DNS 서버 구동
->
+><img src=/img/dns_1.png>
 
 ### Master/Slave 구동
->
+><img src=/img/ms_1.png>
+><img src=/img/ms_2.png>
