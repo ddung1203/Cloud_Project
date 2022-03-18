@@ -46,8 +46,7 @@
 > 
 > | OS | CentOS Linux 7 |
 > | --- | --- |
-> | Server | httpd-2.4.6-97
-> php-7.4 |
+> | Server | httpd-2.4.6-97, php-7.4 |
 > | DB | MariaDB-server-10.2.43-1 |
 > | DNS | bind-9.11.4 |
 > | https | mod_ssl-2.4.6-97 |
