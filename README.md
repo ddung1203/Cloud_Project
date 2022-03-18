@@ -1,5 +1,3 @@
-# 2202_s3_전중석
-
 # 리눅스 미니 프로젝트 - Wordpress 게시판
 
 ```
@@ -49,7 +47,7 @@
 > |                OS |                                CentOS Linux 7 |
 > | --- | --- |
 > |             Server |                                httpd-2.4.6-97
->                                    php-7.4 |
+>                                       php-7.4 |
 > |                DB |                         MariaDB-server-10.2.43-1 |
 > |               DNS |                                   bind-9.11.4 |
 > |               https |                               mod_ssl-2.4.6-97 |
@@ -566,3 +564,11 @@ HTTPS는 HTTP protocol의 암호화된 버전이다. 대게 클라이언트와 �
 > 
 
 ## Master/Slave 구동
+
+> 
+> 
+> 
+> ![ms_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/89c0a10d-8b61-4ce5-ac19-9d7ab173f046/ms_1.png)
+> 
+> ![ms_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e8122007-a203-4950-8129-8d1325e8521c/ms_2.png)
+>
