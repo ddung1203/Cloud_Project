@@ -6,7 +6,7 @@
 >  EC2(Security Group ...), EBS, VPC, ELB, Autoscaling, S3, RDS, CloudFront 등 사용/적용할 수 있는 기술을 구현 가능한 영역까지 설계 및 구현
 
 > Architecture
-![[img/Mini_Project 1.png]]
+<img src="img/Mini_Project 1.png>
 
 > 적용 기술
 >- Amazon Elastic Compute Cloud(EC2)
@@ -117,14 +117,14 @@ Amazon VPC(Virtual Private Cloud)는 클라우드 내의 논리적인 가상공�
 #### 1. 1 VPC 생성
 
 1. VPC 메뉴 검색
-![[img/Pasted image 20220408141631.png]]
+<img src="img/Pasted image 20220408141631.png>
 
 2. VPC 마법사 시작
-![[img/Pasted image 20220408141814.png]]
+<img src="img/Pasted image 20220408141814.png>
 
 3. VPC 설정
 <br>
-![[img/Pasted image 20220408142027.png]]
+<img src="img/Pasted image 20220408142027.png>
 
 > IPv4는 총 32비트의 숫자로 구성된다. 이 중 사용 가능한 공간은 3,706,452,992개로 충분하지 않다. 이의 해결책은 Private Network(사설망)이다. Private Network는 하나의 Public IP를 여러 기기들가 공유할 수 있는 방법이다. 하나의 망에는 Private IP를 부여받은 기기들과 Gateway로 구성된다.
 
@@ -141,27 +141,27 @@ Amazon VPC(Virtual Private Cloud)는 클라우드 내의 논리적인 가상공�
 보안그룹의 이름만 설정하여 비어있는 보안그룹을 생성한다.
 1. 보안 그룹 생성
 
-![[img/Pasted image 20220408144815.png]]
+<img src="img/Pasted image 20220408144815.png>
 
 2. 비어있는 보안그룹(public-sg, private-sg, rds-private-sg) 생성
 
-![[img/Pasted image 20220408144943.png]]
-![[img/Pasted image 20220408145036.png]]
-![[img/Pasted image 20220408145123.png]]
+<img src="img/Pasted image 20220408144943.png>
+<img src="img/Pasted image 20220408145036.png>
+<img src="img/Pasted image 20220408145123.png>
 #### 2.2 public subnet 설정
 public subnet은 외부인터넷의 연결이 되어있는 서브넷이다. 해당 서브넷 내에 인스턴스를 생성 할 것이고 인스턴스 접근을 위해서는 SSH 접속이 가능해야한다. 그리고 모든 TCP 통신에 대해서 private-sg와 rds-private-sg도 허용해야한다.
 
-![[img/Pasted image 20220408145943.png]]																	 
+<img src="img/Pasted image 20220408145943.png]]																>
 
 #### 2.3 private subnet 설정
 private subnet의 경우 public-sg와 rds-private-sg에서 오는 트래픽에 대해서만 인바운드 규칙에 추가해주면 된다.
 
-![[img/Pasted image 20220408150341.png]]
+<img src="img/Pasted image 20220408150341.png>
 
 #### 2.4 rds-private subnet 설정
 rds private subnet은 DB포트에 대해서만 인바운드 규칙을 추가해주면 된다.
 
-![[img/Pasted image 20220408150509.png]]
+<img src="img/Pasted image 20220408150509.png>
 
 이렇게 인바운드 규칙에 다른 보안그룹을 추가하게 되면 인바운드 규칙에 포함된 보안그룹의 서비스들 통과할 수 있게 된다. 이 경우의 이점은 Auto-Scailing시 인스턴스가 추가될 경우 별도로 보안그룹에 해당 인스턴스의 IP를 인바운드 규칙으로 등록할 필요가 없다.
 
@@ -171,25 +171,25 @@ Bastion Host란 내부와 외부를 연결하는 게이트웨이 역할을 하�
 
 1. Bastion Host 생성
 
-![[img/Pasted image 20220408152329.png]]
+<img src="img/Pasted image 20220408152329.png>
 
-![[img/Pasted image 20220408152354.png]]
+<img src="img/Pasted image 20220408152354.png>
 
 > 참고. 키 페어 생성 및 적용 <br>
 _퍼블릭 키와 프라이빗 키로 구성되는 키 페어는 Amazon EC2 인스턴스에 연결할 때 자격 증명 입증에 사용하는 보안 자격 증명 집합이다. Amazon EC2는 퍼블릭 키를 인스턴스에 저장하며 프라이빗 키는 사용자가 저장한다. Windows 인스턴스의 경우 관리자 암호를 복호화하려면 프라이빗 키가 필요하다. 그런 다음 복호화된 암호를 사용하여 인스턴스에 연결한다. 프라이빗 키를 소유하는 사람은 누구나 인스턴스에 연결할 수 있으므로 보안된 위치에 프라이빗 키를 저장해 두는 것이 중요하다._
 >
 >1. 키 페어 가져오기
-![[img/Pasted image 20220408152517.png]]
+<img src="img/Pasted image 20220408152517.png>
 > 2. 키 페어 가져오기 실행
-![[img/Pasted image 20220408152601.png]]
+<img src="img/Pasted image 20220408152601.png>
 > 3. EC2 생성 시 키 페어 선택
-![[img/Pasted image 20220408152646.png]]
+<img src="img/Pasted image 20220408152646.png>
 
 
 #### 3.2 private EC2 생성
 private EC2 내에 httpd, Wordpress, mySQL 설치를 위해 기본 EC2를 생성 후 AMI 이미지를 생성하여 private EC2를 생성하겠다. 이후의 이 AMI는 Autoscaling에서도 사용될 예정이다.
 * wget, wordpress 접속, mySQL 연결을 위해 임시로 포트를 개방
-![[img/Pasted image 20220408154648.png]]
+<img src="img/Pasted image 20220408154648.png>
 
 <br>
 
@@ -218,7 +218,7 @@ PS C:\Users\jeonj> ssh ec2-user@34.207.236.149
 위 코드 실행 후 화면은 아래와 같다. 정상적으로 설치가 잘 되었으니, AMI 이미지를 생성 후 해당되는 EC2를 지우겠다.
 
 
-![[img/Pasted image 20220408162837.png]]
+<img src="img/Pasted image 20220408162837.png>
 
 ### 4. private EC2 접속
 private EC2로 접속하기 위해 경유 서버를 이용한 목적서버를 연결해야 한다. SSH 프록시/터널링을 사용하는 이유는 아래와 같다.
@@ -231,7 +231,7 @@ private EC2로 접속하기 위해 경유 서버를 이용한 목적서버를 �
 
 보통 5번을 점프 호스트라 부른다. 접속을 위해서는 아래와 같이 사용한다.
 
-![[img/Pasted image 20220409100459.png]]
+<img src="img/Pasted image 20220409100459.png>
 
 이는 내부 네트워크와 연결되어 있으나, 외부에서 접근하기 위해서는 내부 네트워크의 다른 서버를 경유해서 이용해야하는 경우에 사용한다. 
 
@@ -241,10 +241,10 @@ RDS란 Amazon Relational Database Service로 클라우드에서 관계형 데이
 RDS의 내부 구조는 EC2와 EBS로 구성되어있다. 따라서 RDS 생성시 EC2의 타입과 EBS의 용량을 설정할 수 있게 된다.
 
 #### 5.1 RDS 생성
-![[img/Pasted image 20220408162136.png]]
-![[img/Pasted image 20220408162216.png]]
-![[img/Pasted image 20220408162226.png]]
-![[img/Pasted image 20220408162253.png]]
+<img src="img/Pasted image 20220408162136.png>
+<img src="img/Pasted image 20220408162216.png>
+<img src="img/Pasted image 20220408162226.png>
+<img src="img/Pasted image 20220408162253.png>
 
 > RDS에서는 고가용성 구성이 가능하다. MULTI-AZ 기능은 DB의 이중화 구성을 하는 것으로 RDS 생성 시 RDS가 위치하게 될 서브넷 그룹을 설정 하게 된다. 이때 서브넷 그룹은 서로 다른 Availibily Zone에 위치하게끔 설정 하고 이렇게 설정한 서브넷 그룹에 RDS의 Primary와 Standby가 위치하게 된다.   
 따라서 평상시에는 Primary가 db서비스를 제공하고 있으며 Primary와 Standby는 Sync형태로 동기화를 지속적으로 진행 한다. 그리고 장애가 발생하거나 DB문제가 생길 경우 Standby를 Primary로 변경키는 FAILOVER를 AWS에서 자동으로 진행 해주게 된다.   
@@ -253,7 +253,7 @@ _* 위 프로젝트는 프리티어로, 이중화 구성을 따로 하지 않았
 
 #### 5.2 AWS EC2, RDS 연결
 엔드포인트 및 포트를 보면 아래와 같다.
-![[img/Pasted image 20220409101301.png]]
+<img src="img/Pasted image 20220409101301.png>
 
  Private EC2에 접속해서 아래 코드를 작성한다.
  - EC2에서 RDS 엔드포인트로 접속한 후, Wordpress에서 사용할 데이터베이스를 생성한다.
@@ -311,7 +311,7 @@ ELB(Elastic Load Balancer)란 트래픽의 분산을 통해 부하를 줄여주�
 이번에는 ELB를 생성하여 아파치에 접속하고 실제 로드밸런싱이 제대로 이루어지고 있는지 확인해보자.
 
 로드 밸런서 생성을 클릭한다.
-![[img/Pasted image 20220409104128.png]]
+<img src="img/Pasted image 20220409104128.png>
 
 LoadBanlancing에는 3가지가 있다.
 
@@ -321,23 +321,23 @@ LoadBanlancing에는 3가지가 있다.
 
 HTTP 통신을 해야하니 ALB로 선택한다.
 
-![[img/Pasted image 20220409104238.png]]
+<img src="img/Pasted image 20220409104238.png>
 
 이름 입력
-![[img/Pasted image 20220409105013.png]]
+<img src="img/Pasted image 20220409105013.png>
 
 VPC 선택 및 만들어 놓은 public 가용영역 선택한다. **가용영역은 반드시 public으로 설정한다.**
-![[img/Pasted image 20220409105032.png]]
+<img src="img/Pasted image 20220409105032.png>
 
 새 보안 그룹 생성 및 라우팅 대상 생성은 다음 그림과 같다.
-![[img/Pasted image 20220409105049.png]]
+<img src="img/Pasted image 20220409105049.png>
 
 public-sg, private-sg, 그리고 본인 IP를 작성하였다.<br>
 _본인 IP로 접속을 위해 _
-![[img/Pasted image 20220409114702.png]]
+<img src="img/Pasted image 20220409114702.png>
 
-![[img/Pasted image 20220409104720.png]]
-![[img/Pasted image 20220409104812.png]]
+<img src="img/Pasted image 20220409104720.png>
+<img src="img/Pasted image 20220409104812.png>
 
 
 
@@ -348,14 +348,14 @@ _본인 IP로 접속을 위해 _
 > 따라서 private-sg의 인바운드 규칙에 alb-sg를 추가시켜줘야한다.
 
 > Health check 내에서 [301에러](https://linuxtut.com/en/f799c0ad7d85b7d60f01/)는 페이지가 리디렉션 되었음을 의미한다. 따라서 이와 같이 대상그룹을 수정해준다.
-> ![[img/Pasted image 20220409110617.png]]
+> <img src="img/Pasted image 20220409110617.png>
 
 
 AWS ELB를 구동하기 위해서 이전에 만든 alb-sg에 80번 포트에 대해서 본인의 IP를 인바운드 규칙에 추가해 주도록 한다.
-![[img/Pasted image 20220409110524.png]]
+<img src="img/Pasted image 20220409110524.png>
 
 Health check을 하면 다음과 같다.
-![[img/Pasted image 20220409113700.png]]
+<img src="img/Pasted image 20220409113700.png>
 
 ### 7. Auto Scaling
 AWS Auto Scaling은 애플리케이션을 모니터링하고 용량을 자동으로 조정하여, 최대한 저렴한 비용으로 안정적이고 예측 가능한 성능을 유지한다. 장점은 아래와 같다.
@@ -365,58 +365,58 @@ AWS Auto Scaling은 애플리케이션을 모니터링하고 용량을 자동으
 - 필요한 만큼만 지불
 
 AWS Auto Scaling의 작동방식은 아래 그림과 같다.
-![[img/Pasted image 20220409120542.png]]
+<img src="img/Pasted image 20220409120542.png>
 
 <br>
 
 #### 7.1 Auto Scaling 설정
 새 시작 템플릿에 시작 탬플릿 생성을 클릭한다.
-![[img/Pasted image 20220409111016.png]]
+<img src="img/Pasted image 20220409111016.png>
 
 AMI는 [3.2 private EC2 생성](#3.2%20private%20EC2%20생성)에서 생성한 AMI를 선택한다.
-![[img/Pasted image 20220409112110.png]]
+<img src="img/Pasted image 20220409112110.png>
 
 마지막 설정까지 끝내고 시작 탬플릿 생성을 한다.
-![[img/Pasted image 20220409112524.png]]
+<img src="img/Pasted image 20220409112524.png>
  
  생성한 탬플릿을 기준으로 Auto Scaling 그룹을 생성한다.
- ![[img/Pasted image 20220409112634.png]]
+ <img src="img/Pasted image 20220409112634.png>
  
  다음
- ![[img/Pasted image 20220409112710.png]]
+ <img src="img/Pasted image 20220409112710.png>
  
  EC2는 사설영역에 구성되기 때문에 Private 으로 선택한다.
- ![[img/Pasted image 20220409112741.png]]
+ <img src="img/Pasted image 20220409112741.png>
  
  [6.1 AWS ELB 생성](#6.1%20AWS%20ELB%20생성)에서 생성한 로드 밸런서에 연결한다.
- ![[img/Pasted image 20220409112828.png]]
+ <img src="img/Pasted image 20220409112828.png>
  
  조정 정책은 다음과 같이 설정하였다. 이후 CPU에 부하를 주어 그룹의 크기를 확인할 것이다.
- ![[img/Pasted image 20220409113107.png]]
+ <img src="img/Pasted image 20220409113107.png>
 
 ## 사용
 정상적으로 접속이 가능하다.
 
-![[img/Pasted image 20220409115118.png]]
+<img src="img/Pasted image 20220409115118.png>
 
 <br>
 
 CPU 부하로 AutoScaling을 확인하겠다. <br>
 CPU 부하는 private ec2에 접속하여 `sha256sum /dev/zero` 으로 부하를 생성하겠다.
 
-![[img/Pasted image 20220409115402.png]]
+<img src="img/Pasted image 20220409115402.png>
 
 <br>
 
 부하를 생성하니, 이와 같이 Auto Scaling 그룹에서 인스턴스가 추가되었다.
 
-![[img/Pasted image 20220409121424.png]]
-![[img/Pasted image 20220409120715.png]]
-![[img/Pasted image 20220409121227.png]]
+<img src="img/Pasted image 20220409121424.png>
+<img src="img/Pasted image 20220409120715.png>
+<img src="img/Pasted image 20220409121227.png>
 
 <br>
 
 부하를 멈추고 일정시간 대기 후 이와 같이 인스턴스가 제거되었다.
 
-![[img/Pasted image 20220409122856.png]]
-![[img/Pasted image 20220409122840.png]]
+<img src="img/Pasted image 20220409122856.png>
+<img src="img/Pasted image 20220409122840.png>
