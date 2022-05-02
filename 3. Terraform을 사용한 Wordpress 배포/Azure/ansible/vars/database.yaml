@@ -1,0 +1,6 @@
+---
+database:
+  name: wordpress
+  user: adminuser@jeonj-mariadb-server-7
+  pwd: dkagh1234.
+  svc_port: jeonj-mariadb-server-7.mariadb.database.azure.com

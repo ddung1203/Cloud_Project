@@ -1,0 +1,6 @@
+- hosts: all
+  become: yes
+  vars_files:
+    - vars/rds_endpoint_info.yml
+  roles:
+    - web

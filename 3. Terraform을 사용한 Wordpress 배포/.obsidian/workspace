@@ -1,0 +1,94 @@
+{
+  "main": {
+    "id": "cbba6bb1c29932db",
+    "type": "split",
+    "children": [
+      {
+        "id": "97cec31a2711bcab",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "AWS/무제폴더/미니 프로젝트.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "3393eeabb0147240",
+    "type": "split",
+    "children": [
+      {
+        "id": "2f735855f8d6c132",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c9920d288ba77814",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "d1fb6a7aa373855c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "69672eeede77a2a7",
+    "type": "split",
+    "children": [
+      {
+        "id": "d7d0ad6e060e61d3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5d6e83f9b82d05c2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "AWS/무제폴더/미니 프로젝트.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "97cec31a2711bcab",
+  "lastOpenFiles": [
+    "AWS/무제폴더/미니 프로젝트.md",
+    "AWS/무제폴더/project.md"
+  ]
+}

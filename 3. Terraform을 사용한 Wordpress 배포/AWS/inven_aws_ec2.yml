@@ -1,0 +1,11 @@
+# aws_ec2 의 정보를 가져오는 인벤토리 파일이다.
+plugin: aws_ec2
+regions:
+  - ap-northeast-2
+aws_profile: "default"
+
+keyed_groups:
+  - key: tags.Name
+
+filters:
+  tag:Name: test

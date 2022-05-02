@@ -1,0 +1,43 @@
+- hosts: all
+  vars_files:
+    - vars/wordpress.yaml
+    - vars/database.yaml
+
+  tasks:
+  - name: Install Apache Server
+    apt:
+      name: apache2
+      state: present
+
+  - name: Install mysql-client
+    apt:
+      name: mysql-client
+      state: present
+
+  - name: Install php
+    apt:
+      name: "{{ php_packages }}"
+      state: present
+
+  - name: Download Wordpress Archive file
+    get_url:
+      url: "{{ wordpress_url }}"
+      dest: /home/azureuser
+
+  - name: Decompress Archive file
+    unarchive:
+      src: "/home/azureuser/{{ wordpress_filename }}"
+      remote_src: yes
+      dest: /var/www/html/
+      owner: www-data
+
+  - name: Copy Database Configure File for Wordpress
+    template:
+      src: wp-config.php.j2
+      dest: /var/www/html/wordpress/wp-config.php
+      owner: www-data
+
+  - name: restart apache2
+    service:
+      name: apache2
+      state: restarted
