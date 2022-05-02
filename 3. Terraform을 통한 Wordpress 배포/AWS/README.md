@@ -1,6 +1,6 @@
 # AWS
 ## 구성도
-![[./img/무제.png]]
+<img src="img/무제.png">
 ## AWS 사용 서비스
 - VPC
 - Security Group
@@ -62,17 +62,17 @@ single_nat_gateway 는 nat 게이트웨이를 하나만 사용할 것인지 묻�
 reuse_nat_ips 는 nat 게이트웨이에 부착된 ip 를 재사용할 지에 대한 여부이다. external_nat_ip_ids 는 nat 게이트웨이에 부착할 탄력적 ip 주소의 id 를 적으면 된다.
 create_database_subnet_group 은 database 용 서브넷을 생성할 것인지에 대한 여부를 묻는 것 이다. 이 VPC 에서 데이터베이스 서브넷을 생성할 것이기 때문에 true 로 설정했다.
 
-![[./img/vpc 생성.png]]
+<img src="img/vpc 생성.png">
 실제로 VPC 는 위 사진과 같이 생성된 것을 확인할 수 있다.
 
-![[./img/서브넷 생성.png]]
+<img src="img/서브넷 생성.png">
 서브넷도 코드로 작성한 값들이 제대로 생성된 것을 확인할 수 있다.
 
-![[./img/라우팅 테이블 생성.png]]
+<img src="img/라우팅 테이블 생성.png">
 라우팅 테이블은 디폴트 값이 설정되어 있어 자동으로 생성된 것을 확인할 수 있다.
 
-![[./img/igw.png]]
-![[./img/nat.png]]
+<img src="img/igw.png">
+<img src="img/nat.png">
 인터넷 게이트웨이가 생성된 것을 확인할 수 있고, 한 개의 가용 영역에서 EIP 를 가진채로 NAT 게이트웨이가 생성된 것을 확인할 수 있다.
 ### Security Group 생성
 ```
@@ -163,7 +163,7 @@ security_groups 는 보안 그룹을 src 로 설정할 수 있고, cidr_blocks �
 
 또한, vpc_id 를 입력하여 해당 보안 그룹을 원하는 VPC 에 설정할 수 있다.
 
-![[./img/보안 그룹.png]]
+<img src="img/보안 그룹.png">
 
 실제로 생성된 보안 그룹은 위와 같다.
 
@@ -367,8 +367,8 @@ resource "null_resource" "rds_endpoint_info" {
 
 `database_host: wordpress.c8xnvne1yftk.ap-northeast-2.rds.amazonaws.com:3306` 실제로 이렇게 작성된다.
 
-![[./img/rds 1.png]]
-![[./img/rds 2.png]]
+<img src="img/rds 1.png">
+<img src="img/rds 2.png">
 
 실제로 디비 인스턴스는 위 사진처럼 생성된다.
 
@@ -404,8 +404,8 @@ aws_efs_mount_target 리소스로 efs 마운트 타겟을 설정한다. 어떤 �
 
 aws_efs_access_point 리소스로 액세스 포인트를 설정한다. 어떤 파일 시스템을 사용할 것인지 어떤 경로가 efs 로 사용될 것인지를 설정한다.
 
-![[./img/파일시스템.png]]
-![[./img/액세스 포인트.png]]
+<img src="img/파일시스템.png">
+<img src="img/액세스 포인트.png">
 
 파일 시스템과 액세스 포인트는 위 사진처럼 생성된다.
 
@@ -470,7 +470,7 @@ ubuntu 18.04 LTS 버전에 /home/vagrant/myproject/terraform_anbile_packer/ansib
 
 web.yml 은 위와 같이 구성되어 있고 vars_files 를 사용하여 rds_endpoint_info 파일의 변수들을 가져온다. 그리고 web roles 를 실행시킨다.
 
-![[./img/Pasted image 20220501231511.png]]
+<img src="img/Pasted image 20220501231511.png">
 
 실제 roles 구조는 위와 같이 되어 있다.
 
@@ -574,7 +574,7 @@ require_once ABSPATH . 'wp-settings.php';
 
 템플릿 파일은 위와 같다.
 
-![[./img/ami.png]]
+<img src="img/ami.png">
 
 packer 를 사용하여 위 사진처럼 AMI 를 생성할 수 있다.
 
@@ -983,27 +983,27 @@ resource "aws_launch_template" "node_template" {
 
 ami 에 data 소스에서 가져온 ami id 값을 입력하도록 했다.
 
-![[./img/launch template.png]]
+<img src="img/launch template.png">
 
 실제로 생성된 런치 템플릿은 위와 같다.
 
-![[./img/대상 그룹.png]]
+<img src="img/대상 그룹.png">
 
 실제로 생성된 대상 그룹은 위와 같다.
 
-![[./img/오토 스케일링 그룹.png]]
+<img src="img/오토 스케일링 그룹.png">
 
 실제로 생성된 오토 스케일링 그룹은 위와 같다.
 
-![[./img/load_balancer.png]]
+<img src="img/load_balancer.png">
 
 실제로 생성된 로드 밸런서는 위와 같다.
 
-![[./img/node, bastion_host instance.png]]
+<img src="img/node, bastion_host instance.png">
 
 실제로 생성된 노드와 bastion host
 
-![[./img/load_balancer DNS 이름으로 접속.png]]
+<img src="img/load_balancer DNS 이름으로 접속.png">
 
 node 로드 밸런서의 DNS 이름으로 접속할 경우 위와 같이 페이지가 나타나는 것을 볼 수 있다.
 
