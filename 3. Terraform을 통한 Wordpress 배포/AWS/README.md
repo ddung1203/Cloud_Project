@@ -1,14 +1,17 @@
 # AWS
 ## 구성도
 <img src="img/무제.png">
+
 ## AWS 사용 서비스
 - VPC
 - Security Group
 - RDS
-- ASG, Launch Template, ALB, Target Group
+- ASG,Launch Template,ALB,Target Group
 - EFS
 - EC2
-## Terraform 
+
+## Terraform
+
 ### 키 페어 생성
 ```
 resource "aws_key_pair" "app_server_key" {  
@@ -20,6 +23,7 @@ resource "aws_key_pair" "app_server_key" {
 file 함수를 사용하여 id_rsa.pub 파일을 공개키로 등록을 했고 해당 키네임을 app_server_key 로 작성했다.
 
 ### VPC 생성
+
 ```
 # NAT 게이트 용 EIP  
 resource "aws_eip" "nat" {  
@@ -48,6 +52,7 @@ module "app_vpc" {
   
   create_database_subnet_group = true  
 }
+
 ```
 VPC module 을 사용하면 한 개의 블록에서 VPC, subnets, az, nat 등 네트워크 설정들을 한 번에 관리할 수 있다. 
 
@@ -74,7 +79,9 @@ create_database_subnet_group 은 database 용 서브넷을 생성할 것인지�
 <img src="img/igw.png">
 <img src="img/nat.png">
 인터넷 게이트웨이가 생성된 것을 확인할 수 있고, 한 개의 가용 영역에서 EIP 를 가진채로 NAT 게이트웨이가 생성된 것을 확인할 수 있다.
+
 ### Security Group 생성
+
 ```
 resource "aws_security_group" "bastion_sg" {  
   name   = "bastion_security_group"  
@@ -151,6 +158,7 @@ resource "aws_security_group" "node_efs_sg" {
   }  
 }
 ```
+
 aws_security_group 이라는 리소스 블록을 사용하여 보안 그룹을 생성할 수 있다.
 
 각각의 보안 그룹에 이름 태그를 달아두었다.
@@ -168,6 +176,7 @@ security_groups 는 보안 그룹을 src 로 설정할 수 있고, cidr_blocks �
 실제로 생성된 보안 그룹은 위와 같다.
 
 ### RDS 생성
+
 ```
 module "rds_allow" {  
   source = "terraform-aws-modules/security-group/aws"  
@@ -192,7 +201,7 @@ module "rds_allow" {
       cidr_blocks = "0.0.0.0/0"  
     }  
   ]
-}  
+}
   
 # 템플릿(프리티어), 디비 인스턴스 이름  
 # 디비 마스터 사용자 이름, 비밀번호  
@@ -201,6 +210,7 @@ module "rds_allow" {
 # vpc 세팅 및 서브넷 설정, 퍼블릭 액세스 설정, VPC 보안 그룹 세팅  
 # 데이터 베이스 인증 옵션(암호인증)  
 # 초기 데이터베이스 이름 설정, 백업, 스냅샷, 디비 인스턴스 암호화 옵션 등  
+
 module "db" {  
   source = "terraform-aws-modules/rds/aws"  
   
