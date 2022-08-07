@@ -537,9 +537,9 @@ HTTPS는 HTTP protocol의 암호화된 버전이다. 대게 클라이언트와 �
  
  
  
- ![db_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/acf413c6-75bb-4a79-be20-ad9b6785dfa4/db_1.png)
+ ![db_1.png](img/db_1.png)
  
- ![db_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/1fb64bce-5689-476a-a883-c4f78b5b3921/db_2.png)
+ ![db_2.png](img/db_2.png)
  
 
 ## HTTPS 확인
@@ -547,7 +547,7 @@ HTTPS는 HTTP protocol의 암호화된 버전이다. 대게 클라이언트와 �
  
  
  
- ![https_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/61112003-b3a1-492e-8d58-f367ca8aad8e/https_1.png)
+ ![https_1.png](img/https_1.png)
  
 
 ## DNS 서버 구동
@@ -555,7 +555,7 @@ HTTPS는 HTTP protocol의 암호화된 버전이다. 대게 클라이언트와 �
  
  
  
- ![dns_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/58d95415-c5ba-4b9e-b5e5-818afb6d084f/dns_1.png)
+ ![dns_1.png](img/dns_1.png)
 
 
 ## Master/Slave 구동
@@ -563,6 +563,6 @@ HTTPS는 HTTP protocol의 암호화된 버전이다. 대게 클라이언트와 �
  
  
  
- ![ms_1.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/89c0a10d-8b61-4ce5-ac19-9d7ab173f046/ms_1.png)
+ ![ms_1.png](img/ms_1.png)
  
- ![ms_2.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e8122007-a203-4950-8129-8d1325e8521c/ms_2.png)
+ ![ms_2.png](img/ms_2.png)
