@@ -1,33 +1,31 @@
 #  AWS 클라우드에서 고가용성 Wordpress 서비스 배포
 
-> https://github.com/jeonjungseok/cloud-mini-project 에서도 확인할 수 있습니다.
 
+EC2(Security Group ...), EBS, VPC, ELB, Autoscaling, S3, RDS, CloudFront 등 사용/적용할 수 있는 기술을 구현 가능한 영역까지 설계 및 구현
 
->  EC2(Security Group ...), EBS, VPC, ELB, Autoscaling, S3, RDS, CloudFront 등 사용/적용할 수 있는 기술을 구현 가능한 영역까지 설계 및 구현
-
-> Architecture
+Architecture
 <img src="img/Mini_Project 1.png">
 
-> 적용 기술
->- Amazon Elastic Compute Cloud(EC2)
->
->- Amazon Elastic Block Store(EBS)
->
->- Amazon Virtual Private Cloud(VPC)
->
->- Amazon Relational Database Service(RDS
->
->- AWS Elastic Load Balancer(ELB)
->
->- AWS Autoscaling
->
->- Wordpress httpd-2.4.6-97, php-7.4
->
->- MariaDB-server-10.2.43-1
->```
+적용 기술
+- Amazon Elastic Compute Cloud(EC2)
+
+- Amazon Elastic Block Store(EBS)
+
+- Amazon Virtual Private Cloud(VPC)
+
+- Amazon Relational Database Service(RDS
+
+- AWS Elastic Load Balancer(ELB)
+
+- AWS Autoscaling
+
+- Wordpress httpd-2.4.6-97, php-7.4
+
+- MariaDB-server-10.2.43-1
+```
 We recommend servers running version 7.4 or greater of PHP and mySQL version 5.7 OR MariaDB version 10.2 or greater.
 We also recommend either Apache or Nginx as the most robust options or running WordPress, but neither is required.
->```
+```
 
 <br>
 
@@ -126,11 +124,11 @@ Amazon VPC(Virtual Private Cloud)는 클라우드 내의 논리적인 가상공�
 <br>
 <img src="img/Pasted image 20220408142027.png">
 
-> IPv4는 총 32비트의 숫자로 구성된다. 이 중 사용 가능한 공간은 3,706,452,992개로 충분하지 않다. 이의 해결책은 Private Network(사설망)이다. Private Network는 하나의 Public IP를 여러 기기들가 공유할 수 있는 방법이다. 하나의 망에는 Private IP를 부여받은 기기들과 Gateway로 구성된다.
+IPv4는 총 32비트의 숫자로 구성된다. 이 중 사용 가능한 공간은 3,706,452,992개로 충분하지 않다. 이의 해결책은 Private Network(사설망)이다. Private Network는 하나의 Public IP를 여러 기기들가 공유할 수 있는 방법이다. 하나의 망에는 Private IP를 부여받은 기기들과 Gateway로 구성된다.
 
-> Classless Inter Domain Routing(CIDR)란, 여러개의 사설망을 구축하기 위해 망을 나누는 방법이다. IP는 주소의 영역을 여러 네트워크 영역으로 나누기 위해 IP를 묶는 방식이다. <br>VPC의 CIDR블록을 10.0.0.0/16 으로 설정하는 것을 추천한다.
+Classless Inter Domain Routing(CIDR)란, 여러개의 사설망을 구축하기 위해 망을 나누는 방법이다. IP는 주소의 영역을 여러 네트워크 영역으로 나누기 위해 IP를 묶는 방식이다. <br>VPC의 CIDR블록을 10.0.0.0/16 으로 설정하는 것을 추천한다.
 
-> VPC 마법사로 VPC, 인터넷 게이트웨이, 서브넷, 라우팅테이블 생성 및 설정이 가능하다.
+VPC 마법사로 VPC, 인터넷 게이트웨이, 서브넷, 라우팅테이블 생성 및 설정이 가능하다.
 
 ### 2. 보안그룹
 보안그룹이란 인스턴스에 대한 인바운드 및 아웃바운드 트래픽을 제어하는 가상 방화벽 역할을 하는 장치이다. 보안그룹은 인스턴스 수준에서 작동하며 VPC에 있는 서브넷의 각 인스턴스를 서로 다른 보안그룹으로 지정할 수 있다. <br>
@@ -175,14 +173,14 @@ Bastion Host란 내부와 외부를 연결하는 게이트웨이 역할을 하�
 
 <img src="img/Pasted image 20220408152354.png">
 
-> 참고. 키 페어 생성 및 적용 <br>
+참고. 키 페어 생성 및 적용 <br>
 _퍼블릭 키와 프라이빗 키로 구성되는 키 페어는 Amazon EC2 인스턴스에 연결할 때 자격 증명 입증에 사용하는 보안 자격 증명 집합이다. Amazon EC2는 퍼블릭 키를 인스턴스에 저장하며 프라이빗 키는 사용자가 저장한다. Windows 인스턴스의 경우 관리자 암호를 복호화하려면 프라이빗 키가 필요하다. 그런 다음 복호화된 암호를 사용하여 인스턴스에 연결한다. 프라이빗 키를 소유하는 사람은 누구나 인스턴스에 연결할 수 있으므로 보안된 위치에 프라이빗 키를 저장해 두는 것이 중요하다._
->
->1. 키 페어 가져오기
+
+1. 키 페어 가져오기
 <img src="img/Pasted image 20220408152517.png">
-> 2. 키 페어 가져오기 실행
+2. 키 페어 가져오기 실행
 <img src="img/Pasted image 20220408152601.png">
-> 3. EC2 생성 시 키 페어 선택
+3. EC2 생성 시 키 페어 선택
 <img src="img/Pasted image 20220408152646.png">
 
 
@@ -246,7 +244,7 @@ RDS의 내부 구조는 EC2와 EBS로 구성되어있다. 따라서 RDS 생성�
 <img src="img/Pasted image 20220408162226.png">
 <img src="img/Pasted image 20220408162253.png">
 
-> RDS에서는 고가용성 구성이 가능하다. MULTI-AZ 기능은 DB의 이중화 구성을 하는 것으로 RDS 생성 시 RDS가 위치하게 될 서브넷 그룹을 설정 하게 된다. 이때 서브넷 그룹은 서로 다른 Availibily Zone에 위치하게끔 설정 하고 이렇게 설정한 서브넷 그룹에 RDS의 Primary와 Standby가 위치하게 된다.   
+RDS에서는 고가용성 구성이 가능하다. MULTI-AZ 기능은 DB의 이중화 구성을 하는 것으로 RDS 생성 시 RDS가 위치하게 될 서브넷 그룹을 설정 하게 된다. 이때 서브넷 그룹은 서로 다른 Availibily Zone에 위치하게끔 설정 하고 이렇게 설정한 서브넷 그룹에 RDS의 Primary와 Standby가 위치하게 된다.   
 따라서 평상시에는 Primary가 db서비스를 제공하고 있으며 Primary와 Standby는 Sync형태로 동기화를 지속적으로 진행 한다. 그리고 장애가 발생하거나 DB문제가 생길 경우 Standby를 Primary로 변경키는 FAILOVER를 AWS에서 자동으로 진행 해주게 된다.   
 RDS는 기본적으로 엔드포인트라는 DNS를 이용하기 때문에 FAILOVER시에도 Application에서의 작업은 필요하지 않다. 엔드포인트는 FAILOVER의 경우도 그대로 유지되기 때문이다. 그리고 유저가 Standby DB로는 접근이 불가능 하다.<br>
 _* 위 프로젝트는 프리티어로, 이중화 구성을 따로 하지 않았음._
@@ -342,13 +340,13 @@ _본인 IP로 접속을 위해 _
 
 
 #### 6.2 AWS ELB 구동 확인
-> **대상그룹의 Health check 및 로드밸런싱 테스트**  
+**대상그룹의 Health check 및 로드밸런싱 테스트**  
   	ELB 생성이 끝나게 되면 ELB는 대상그룹에 포함한 인스턴스가 정상적으로 작동 하고 있는지 Health check를 하게 된다. <br>모니터링 화면을 보면 unhealthy가 나오는 것을 확인할 수 있다. <br>
-> 최초 elb를 생성할때 만들었던 alb-sg는 private-sg와 public-sg가 모두 인바운드 규칙에 포함되어 있어 통신이 가능하지만 ap가 있는 private-sg는 alb-sg를 인바운드에 추가하지 않았기 때문에 접근 자체가 불가능 하다.
-> 따라서 private-sg의 인바운드 규칙에 alb-sg를 추가시켜줘야한다.
+최초 elb를 생성할때 만들었던 alb-sg는 private-sg와 public-sg가 모두 인바운드 규칙에 포함되어 있어 통신이 가능하지만 ap가 있는 private-sg는 alb-sg를 인바운드에 추가하지 않았기 때문에 접근 자체가 불가능 하다.
+따라서 private-sg의 인바운드 규칙에 alb-sg를 추가시켜줘야한다.
 
-> Health check 내에서 [301에러](https://linuxtut.com/en/f799c0ad7d85b7d60f01/)는 페이지가 리디렉션 되었음을 의미한다. 따라서 이와 같이 대상그룹을 수정해준다.
-> <img src="img/Pasted image 20220409110617.png">
+Health check 내에서 [301에러](https://linuxtut.com/en/f799c0ad7d85b7d60f01/)는 페이지가 리디렉션 되었음을 의미한다. 따라서 이와 같이 대상그룹을 수정해준다.
+<img src="img/Pasted image 20220409110617.png">
 
 
 AWS ELB를 구동하기 위해서 이전에 만든 alb-sg에 80번 포트에 대해서 본인의 IP를 인바운드 규칙에 추가해 주도록 한다.
